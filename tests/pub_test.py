@@ -14,8 +14,8 @@ class TestPub(unittest.TestCase):
         self.tiny_tim = Customer("Tiny Tim", 5.00, 8, 40)
         self.apple_pie = Food("Apple Pie", 5.00, 30)
         self.stovies = Food("Stovies", 4.00, 45)
-        self.stock = [{ "name" : "Guiness", "ammount" : 500}, 
-                      { "name" : "Shandy", "ammount" : 1000}]
+        self.stock = [{ "name" : self.guiness.name, "amount" : 500, "price": self.guiness.price}, 
+                      { "name" : self.shandy.name, "amount" : 1000, "price": self.shandy.price}]
         self.pub = Pub("The Thirsty Badger", 100.00, self.stock)
         # self.pub.add_stock(self.guiness)
         # self.pub.add_stock(self.shandy)
@@ -30,9 +30,6 @@ class TestPub(unittest.TestCase):
     
     def test_check_stock(self):
         self.assertEqual("Guiness", self.pub.stock[0]["name"])
-
-    # def test_pub_has_till_value(self):
-    #     self.assertEqual(100.00, self.pub.till)
 
     def test_sell_drink(self):
         self.customer = self.deborah
@@ -88,6 +85,9 @@ class TestPub(unittest.TestCase):
         self.pub.sell_food(self.customer, self.stovies)
         self.assertEqual(5, self.customer.drunkenness)
 
+    def test_stock_value(self):
+        result = self.pub.stock_value()
+        self.assertEqual(5750, result)
     
     # def test_get_stock_count(self):
     #     self.get_stock_count()

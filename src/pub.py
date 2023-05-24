@@ -9,16 +9,11 @@ class Pub():
     def increase_till(self, new_sale_value):
         self.till += new_sale_value
 
-    # def get_till(self):
-    #     return self.till
-
     def stock_value(self):
         value = 0
-        for ammount in self.stock:
-            
-            value += 
-        
-        return self.stock
+        for drink in self.stock:
+            value += drink["amount"] * drink["price"]
+        return value
     
     def add_stock(self, drinks):
         for drink in drinks:
@@ -35,7 +30,6 @@ class Pub():
             return True
         else:
             return False
-
     
     def sell_drink(self, customer, drink):
         if self.check_drunkenness(customer) and self.check_age(customer):
@@ -47,9 +41,3 @@ class Pub():
             customer.spend(food.price)
             customer.drunkenness -= food.rejuvenation_level
    
-   
-   
-   
-    # def get_stock_count(self):
-    #     count = len(self.drinks)
-    #     return count
